@@ -1,3 +1,3 @@
-# project-template
+# Project Template
 
-A generic template for projects with preset React, Express, PG, Webpack boilerplate
+###### Author: Tom Herrmann
