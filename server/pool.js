@@ -1,15 +1,17 @@
-const { Pool } = require('pg');
+const { Client } = require('pg');
 
 const connectionString = 'PASTE YOUR CONNECTION STRING HERE';
 
-const pool = new Pool({
+const client = new Client({
   connectionString,
-  port: 5432
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-pool.connect(err => {
+client.connect(err => {
   if (err) console.log(err);
-  else console.log('Connected to database on 5432!');
+  else console.log('Connected to database!');
 });
 
-module.exports = pool;
+module.exports = client;
