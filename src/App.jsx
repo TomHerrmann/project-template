@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { connect, useStore } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './actions/actions';
 
 const App = () => {
   return (
@@ -10,4 +13,16 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ ...actions }, dispatch);
+
+const AppContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+export default AppContainer;
