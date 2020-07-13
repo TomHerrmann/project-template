@@ -1,1 +1,1 @@
-// export const SOME_ACTION = 'SOME_ACTION'
+export const APP_LOADING = 'APP_LOADING';

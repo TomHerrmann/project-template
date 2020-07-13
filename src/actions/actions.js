@@ -1,6 +1,6 @@
-// import { /* stuff */} from '../constants/actionTypes';
+import { APP_LOADING } from '../constants/actionTypes';
 
-// export const someAction = () => ({
-//   type: SOME_ACTION,
-//   payload: null,
-// });
+export const appLoading = (isLoading) => ({
+  type: APP_LOADING,
+  payload: isLoading,
+});

@@ -1,14 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { connect, useStore } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from './actions/actions';
 
-const App = () => {
+import LoadingSpinner from './components/LoadingSpinner.jsx';
+
+const App = ({ appLoading, isLoading }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      appLoading(false);
+    }, 250);
+  });
+
+  const renderContent = () => {
+    return isLoading ? (
+      <LoadingSpinner />
+    ) : (
+      <h1>This is the start of something great!</h1>
+    );
+  };
+
   return (
     <div className="app">
-      <div className="title-container">
-        <h1>This is the start of something great!</h1>
-      </div>
+      <div className="container">{renderContent()}</div>
     </div>
   );
 };
