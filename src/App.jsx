@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from './actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { appLoading } from './actions/actions';
 
 import LoadingSpinner from './components/LoadingSpinner.jsx';
 
-const App = ({ appLoading, isLoading }) => {
+const App = () => {
+  const { isLoading } = useSelector((state) => ({ ...state.appReducer }));
+  const dispatch = useDispatch();
+
+  console.log('isLoading from state -> ', isLoading);
   useEffect(() => {
     setTimeout(() => {
-      appLoading(false);
+      dispatch(appLoading(false));
     }, 250);
-  });
+  }, []);
 
   const renderContent = () => {
     return isLoading ? (
@@ -27,16 +30,4 @@ const App = ({ appLoading, isLoading }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return state;
-};
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ ...actions }, dispatch);
-
-const AppContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
-
-export default AppContainer;
+export default App;
