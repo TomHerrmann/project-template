@@ -8,7 +8,6 @@ const App = () => {
   const { isLoading } = useSelector((state) => ({ ...state.appReducer }));
   const dispatch = useDispatch();
 
-  console.log('isLoading from state -> ', isLoading);
   useEffect(() => {
     setTimeout(() => {
       dispatch(appLoading(false));
